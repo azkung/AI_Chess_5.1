@@ -97,7 +97,7 @@ def AI(board : chess.Board, depth, alpha, beta):
 
 def bestMove(board: chess.Board):
     score, bestMove = AI(board, 3, float('-inf'), float('inf'))
-    print(score)
+    # print(score)
     if bestMove == None:
         for move in board.legal_moves:
             return move
