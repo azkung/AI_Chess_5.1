@@ -1,3 +1,4 @@
+from unittest import skip
 import numpy as np
 import chess
 import chess.pgn
@@ -65,22 +66,31 @@ def format(path : str, idx : int, total_games : int, skip_ties : bool = False):
         for i in range(total_games):
             game = chess.pgn.read_game(pgn)
             result = game.headers["Result"]
+            plyCount = game.headers["PlyCount"]
+            if(int(plyCount) < 20):
+                continue
+            score = 0
+            inc = 1/int(plyCount)
             if(result == "1-0"):
                 winner = 1
+                inc = 1/int(plyCount)
             if(result == "0-1"):
                 winner = 0
+                inc = -1/int(plyCount)
             if(result == "1/2-1/2"):
                 if(skip_ties):
                     continue
                 winner = 0.5
+                inc = 0
 
             board = game.board()
             x.append(board_to_np(board))
-            y.append(winner)
+            y.append(score)
             for move in game.mainline_moves():
                 board.push(move)
                 x.append(board_to_np(board))
-                y.append(winner)
+                score += inc
+                y.append(score**3)
         x = np.array(x)
         y = np.array(y)
         print(x.shape)

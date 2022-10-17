@@ -9,7 +9,7 @@ import torch.nn as nn
 start = datetime.now()
 
 t = int(time.time())
-t = 1665754084
+# t = 1665789487
 modelPath = f"models/{t}"
 dataPathTrain = f"numpy/training/{t}"
 dataPathTest = f"numpy/testing/{t}"
@@ -22,8 +22,8 @@ print(dataPathTrain)
 print("Formatting")
 
 
-# tools.format(dataPathTrain, 0, 25000, skip_ties=False)
-# tools.format(dataPathTest, 25000, 1000)
+tools.format(dataPathTrain, 0, 25000, skip_ties=True)
+tools.format(dataPathTest, 25000, 1000)
 
 formatend = datetime.now()
 td = (formatend - start).total_seconds() * 10**3

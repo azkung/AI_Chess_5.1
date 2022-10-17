@@ -12,7 +12,7 @@ from training.model import Net
 import os.path
 import tools
 
-MODEL_PATH = os.path.dirname(__file__) + '/../models/1665724884'
+MODEL_PATH = os.path.dirname(__file__) + '/../models/1665980249'
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 net = Net()
 net.load_state_dict(torch.load(MODEL_PATH))

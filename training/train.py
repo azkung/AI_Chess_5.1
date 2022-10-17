@@ -40,9 +40,9 @@ def run_train(modelPath, xPath, yPath, epochs, prevModelPath = None, useCUDA = F
     if(prevModelPath != None):
         net.load_state_dict(torch.load(prevModelPath))
 
-    optimizer = optim.Adam(net.parameters(), lr =0.0001)
+    optimizer = optim.Adam(net.parameters(), lr =0.00001)
 
-    criterion = nn.MSELoss()
+    criterion = nn.L1Loss()
 
     print("Epochs Started")
 

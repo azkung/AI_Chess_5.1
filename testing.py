@@ -16,6 +16,7 @@ print(x.shape)
 net = Net()
 print(net(x))
 
+print(nn.HingeEmbeddingLoss(-1, 0))
 
 
 

@@ -22,7 +22,7 @@ while board.is_game_over() == False:
         break
 
     print(board.turn)
-    bestMove = bot_middle.bestMove(board)
+    bestMove = bot_attack.bestMove(board)
     board.push(bestMove)
     print(board)
     print()
